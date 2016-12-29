@@ -68,6 +68,7 @@ Route::group(['middleware'=>'auth'],function(){
 
 });
 
+////////////////Routes needing no user auth///////////////////////////
 Route::get('items/{hashed_id}/details', 'ItemController@show');
 Route::get('categories/{hashed_id}/items', 'ItemController@getItemsByCategory');
 Route::get('/search', 'ItemController@getItemSearchResult');
