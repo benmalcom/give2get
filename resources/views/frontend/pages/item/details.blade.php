@@ -2,12 +2,11 @@
 @section('content')
 
     <div class="col-sm-10 col-sm-offset-1 mt-30 mb-10 pt-30">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="p-10 bg-white">
                 <h3 class="text-muted">{{$item->name}}</h3>
             </div>
-            <div class="panel-body">
-                <div class="row">
+
+                <div class="row bg-white">
                     <div class="col-sm-7 mb-20">
                         <div class="product-details-image col-sm-12 shadow p-0">
                             @if(isset($item->images) && count($item->images) > 0)
@@ -78,11 +77,6 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-
-                </div>
             </div>
-        </div>
-
     </div>
 @endsection
