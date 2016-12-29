@@ -17,7 +17,7 @@ class CreateItemImagesTable extends Migration
             $table->increments('id');
             $table->string('public_id');
             $table->string('url');
-            $table->string('item_id');
+            $table->unsignedInteger('item_id');
             $table->timestamps();
 
             $table->foreign('item_id')
