@@ -215,7 +215,7 @@ class ItemController extends Controller
             if(!is_null($category)) $query->where('category_id',$category->id);
         }
 
-        $items = $query->get();
+        $items = $query->orderBy('created_at','desc')->get();
         $categories = Category::withCount(['items'])->get();
         return view('frontend.pages.item.search-results',compact('items','categories'));
     }

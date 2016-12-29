@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::withCount(['items'])->get();
-        $items = Item::with('state')->with('category')->with('images')->get();
+        $items = Item::with('state')->with('category')->with('images')->orderBy('created_at','desc')->get();
         return view('frontend.pages.home',compact('categories','items'));
     }
 }
