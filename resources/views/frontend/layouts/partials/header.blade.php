@@ -16,14 +16,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <a href="/items/add" class="btn btn-default simplebox navbar-btn pull-right mt-15"><i class="fa fa-plus"></i> Exchange your item</a>
+            {{--<a href="/items/add" class="pull-right mt-15"><i class="fa fa-plus"></i> Exchange your item</a>--}}
+            <p class="navbar-text navbar-right mr-5"><a href="/items/add" class="navbar-link btn btn-default"><i class="fa fa-plus"></i> Exchange your item</a></p>
             <ul class="nav navbar-nav navbar-right mr-5">
-                <li ><a href="/"><strong><i class="fa fa-home"></i> Home</strong></a></li>
+                <li ><a href="/"><i class="fa fa-home"></i> Home</a></li>
                 <li class="dropdown">
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
-                        <strong>Account</strong>
+                        Account
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
