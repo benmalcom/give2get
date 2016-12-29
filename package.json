@@ -2,7 +2,14 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "postinstall": "bower install"
+  },
+  "engines": {
+    "node": "6.9.1"
+  },
+  "dependencies": {
+    "bower": "^1.7.9"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
