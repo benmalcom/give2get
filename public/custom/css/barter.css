@@ -1050,6 +1050,8 @@ user profile*/
     height: 100%;
     width: 100%;
     margin-top: 10px;
+}
+.product-img{
     box-shadow: rgba(0,0,0,0.2) 0 0 1px !important;
 }
 
