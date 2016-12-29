@@ -12,7 +12,7 @@
                         <div class="col-sm-3">
                             <div class="col-sm-12 product-outer">
 
-                                <div class="product-img">
+                                <div class="product-img shadow-lite">
                                     <a href="/items/{{$item->hashed_id}}/details">
                                         @if(isset($item->images) && count($item->images) > 0)
                                             <img src="{{$item->images[0]->url}}">
