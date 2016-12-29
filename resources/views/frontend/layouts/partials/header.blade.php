@@ -10,13 +10,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand text-custom" href="/"><b><i class="fa fa-exchange"></i> Give2get</b></a>
+            <a class="navbar-brand text-custom" href="/"><i class="fa fa-exchange"></i> Give2get</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <a href="/items/add" class="btn btn-default simplebox navbar-btn pull-right mt-15 btn-danger{{--@if(Request::path() == "products/add") {{"btn-custom text-white"}} @endif"--}}><i class="fa fa-plus"></i> Exchange your item</a>
+                <a href="/items/add" class="btn btn-default simplebox navbar-btn pull-right mt-15{{--@if(Request::path() == "items/add") {{"btn-custom"}} @endif--}}"><i class="fa fa-plus"></i> Exchange your item</a>
             <ul class="nav navbar-nav navbar-right mr-5">
                 <li ><a href="/"><strong><i class="fa fa-home"></i> Home</strong></a></li>
                 <li class="dropdown">
