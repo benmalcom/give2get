@@ -1050,7 +1050,7 @@ user profile*/
     height: 100%;
     width: 100%;
     margin-top: 10px;
-    border-style: groove;
+    border: 2px groove #555;
 }
 
 
