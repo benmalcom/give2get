@@ -21,11 +21,9 @@
                                     @else
                                         <img src="/custom/img/image_not_available.png">
                                     @endif
-                                    </a>
-                                </div>
+                                    </a></div>
                                 <div class="product-meta pt-10 mt-15">
                                     <h3 class="text-left text-custom text-muted">{{$item->name}}</h3>
-                                    <p class="text-yellow"><small> <i class="fa fa-tags"></i> {{$item->category->name}}</small></p>
                                     <p class="text-default dk"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
                                     <p><a href="/items/{{$item->hashed_id}}/details" class="btn btn-default btn-sm"><i class="fa fa-info-circle"></i> Details</a></p>
                                 </div>

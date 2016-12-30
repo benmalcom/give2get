@@ -1,19 +1,14 @@
 @extends('frontend.layouts.default')
 @section('content')
 
-    <div class="col-sm-10 col-sm-offset-1 mt-30 mb-10 pt-30">
-        <div class="col-sm-12 simplebox mb-10 shadow-lite custom-bar">
-            <h4>{{$item->name}}</h4>
-            <p class="text-success"><i class="fa fa-info-circle"></i> Item details</p>
-        </div>
-
-
-        <div class="mt-10">
+    <div class="col-sm-8 col-sm-offset-2 mt-30 mb-10 pt-30">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <div class="col-sm-12 bg-white p-20 shadow-lite">
+                    <div class="col-sm-8 mb-10">
+                        <div class="col-sm-12 bg-white p-20">
+                            <h4 class="text-custom">{{$item->name}}</h4>
+                            <p class="text-muted"><strong><i class="fa fa-map-marker"></i> {{$item->address.', '.$item->state->name}}</strong> | Added {{$item->created_at->diffForHumans()}}</p>
 
-                            <div class="product-details-image col-sm-12 shadow p-0">
+                            <div class="product-details-image col-sm-12 shadow-lite p-0">
                                 @if(isset($item->images) && count($item->images) > 0)
                                     <img src="{{$item->images[0]->url}}" class="product-image-big" style="border: 4px solid #fff">
                                 @else
@@ -32,57 +27,63 @@
 
                             </div>
                         </div>
-                        </div>
-                    <div class="col-sm-6">
-                        <div class="col-sm-12 bg-white p-20 shadow-lite"><table class="table shadow-lite">
-                                <tr>
-                                    <th class="bg-hash">In exchange for</th>
-                                    <td>{{$item->exchange}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="bg-hash">Poster</th>
-                                    <td>{{$item->poster->fullName()}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="bg-hash">Contact Mobile No</th>
-                                    <td class="bg-success">{{$item->poster->mobile}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="bg-hash">Item Category</th>
-                                    <td>{{$item->category->name}}</td>
-                                </tr>
-                                @if(isset($item->address))
-                                    <tr>
-                                        <th class="bg-hash">Address</th>
-                                        <td>{{$item->address}}</td>
-                                    </tr>
-                                @endif
-                                <tr>
-                                    <th class="bg-hash">State</th>
-                                    <td>{{$item->state->name}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="bg-hash">Views</th>
-                                    <td>{{$item->views}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="bg-hash">Uploaded</th>
-                                    <td>{{$item->created_at->diffForHumans()}}</td>
-                                </tr>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-12">
+                            <div class="list-group">
+                                <div class="list-group-item row product-detail-widget">
+                                    <div class="col-sm-3 col-xs-3 text-center bg-custom">
+                                        <i class="fa fa-exchange fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-9 col-xs-9 detail-parent text-muted"><p class="detail">{{ucwords($item->exchange)}}</p></div>
+                                </div>
 
-                            </table>
-                            <div class="panel panel-default simplebox">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><strong>Further description</strong></h3>
+                                <div class="list-group-item row product-detail-widget">
+                                    <div class="col-sm-3 col-xs-3 text-center bg-warning">
+                                        <i class="fa fa-map-marker fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-9 col-xs-9 detail-parent">
+                                        <p class="detail text-muted">{{ucwords($item->address.','.$item->state->name)}}</p>
+                                    </div>
                                 </div>
-                                <div class="panel-body">
-                                    @if(isset($item->description))
-                                        <p>{{$item->description}}</p>
-                                    @else
-                                        <p class="text-danger">No description</p>
-                                    @endif
+
+                                <div class="list-group-item row product-detail-widget">
+                                    <div class="col-sm-3 col-xs-3 text-center bg-custom">
+                                        <i class="fa fa-tag fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-9 col-xs-9 detail-parent">
+                                        <p class="detail text-muted">{{ucwords($item->category->name)}}</p>
+                                    </div>
                                 </div>
-                            </div></div>
+
+                                <div class="list-group-item row product-detail-widget">
+                                    <div class="col-sm-3 col-xs-3 text-center bg-info">
+                                        <i class="fa fa-eye fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-9 col-xs-9 detail-parent">
+                                        <p class="detail text-muted"><strong>{{$item->views}}</strong> times</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="list-group-item row product-detail-widget">
+                                    <h4 class="text-muted"><strong>Poster</strong></h4>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-5 col-xs-5">
+                                            <img src="{{ !empty($item->poster->avatar_url)  ?  $item->poster->avatar_url : '/custom/img/no_photo_available.png'}}" style="margin: 0 auto; width: 100%; border-radius: 70px !important;">
+                                        </div>
+                                        <div class="col-sm-7 col-xs-7 bg-info">
+                                            <p class="text-muted"><strong>{{$item->poster->fullName()}}</strong></p>
+                                            <p>{{$item->poster->mobile}}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -90,6 +91,44 @@
                 <div class="clearfix"></div>
 
         </div>
+      <div class="col-sm-10 col-sm-offset-1 mt-10">
+          <h3 class="text-muted">Similar items</h3>
+          <hr>
+          <div class="row mb-10">
+              @if(isset($similar) && count($similar) > 0)
+                  @foreach($similar as $item)
+                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                          <div class="col-sm-12 product-outer">
 
-    </div>
+                              <div class="product-img">
+                                  <a href="/items/{{$item->hashed_id}}/details">
+                                      @if(isset($item->images) && count($item->images) > 0)
+                                          <img src="{{$item->images[0]->url}}">
+                                      @else
+                                          <img src="/custom/img/image_not_available.png">
+                                      @endif
+                                  </a>
+                              </div>
+                              <div class="product-meta pt-10 mt-15">
+                                  <h3 class="text-left text-custom text-muted">{{$item->name}}</h3>
+                                  <p class="text-default dk"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
+                                  <p><a href="/items/{{$item->hashed_id}}/details" class="btn btn-default btn-sm"><i class="fa fa-info-circle"></i> Details</a></p>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+              @else
+                  <div class="col-sm-12">
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                              <p class="text-info">No similar items available!</p>
+                          </div>
+
+                      </div>
+                  </div>
+              @endif
+
+
+          </div>
+      </div>
 @endsection

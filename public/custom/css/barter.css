@@ -954,7 +954,7 @@ user profile*/
 }
 
 .product-outer{
-    height: 335px !important;
+    height: 300px !important;
     margin: 3px 0;
     padding-bottom: 10px;
     box-shadow: rgba(0,0,0,0.2) 0 0 1px !important;
@@ -999,6 +999,23 @@ user profile*/
 .product-category{
     background-color: #C5C936;
     color: #ffffff;;
+}
+.product-detail-widget{
+    min-height: 4px !important;
+    box-shadow: rgba(0,0,0,0.2) 0 0 1px !important;
+}
+
+.detail-parent{
+    display: table;
+    /*text-align: center*/;
+}
+.detail-parent > .detail{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.user-widget .pr0file-pic{
+    height: 300px;
 }
 
 .user-item{

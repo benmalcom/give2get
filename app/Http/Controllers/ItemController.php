@@ -95,11 +95,14 @@ class ItemController extends Controller
     public function show($hashed_id)
     {
         //
-        $item = Item::where('hashed_id',$hashed_id)->with('category')->with('state')->with('poster')->with('images')->first();
+        $item = Item::where('hashed_id',$hashed_id)->with('state')->with('poster')->with('images')->first();
         if(!is_null($item)){
             $item = $item->incrementViews();
         }
-        return view('frontend.pages.item.details',compact('item'));
+        $similar = Item::where('category_id',$item->category->id)
+            ->with('state')->with('poster')->with('images')
+            ->take(4)->get();
+        return view('frontend.pages.item.details',compact('item','similar'));
     }
 
     /**
