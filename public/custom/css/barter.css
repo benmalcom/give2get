@@ -2,7 +2,7 @@
 /*
 Custom styles*/
 body{
-    padding-top: 70px;
+    padding-top: 100px;
     /*font-family: 'Oxygen', sans-serif;*/
     font-family: 'Raleway', sans-serif;
     background-color: #F5F5F5;
@@ -22,6 +22,11 @@ a{
     background-color:#1FA67A;
     border-color: #1FA67A;
     color: #ffffff !important;
+}
+.btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active, .open>.dropdown-toggle.btn-custom {
+    color: #fff;
+    background-color: #1a8965;
+    border-color: #1c986f; /*set the color you want here*/
 }
 .btn-custom:hover,.btn-custom:focus{
     background-color: #1b926c;
@@ -863,6 +868,9 @@ Custom navbar rules*/
     border-radius: 0;
     border:none;
 }
+.navbar-fixed-top{
+    top: 30px;
+}
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-brand:hover,
@@ -1122,6 +1130,15 @@ user profile*/
     color: #fff !important;
 }
 
+#first{
+    z-index: 5000;
+    width: 100%;
+    height: 30px!important;
+    top: 0;
+    left: 0;
+    position: fixed;"
+}
+
 
 
 /*
@@ -1135,11 +1152,13 @@ MEDIA QUERIES*/
         display: inline;
         padding: 3px;
     }
+    /*
 
     .navbar-login  a {
         line-height: 0;
         display: block;
     }
+    */
 
     .product-outer{
         margin-bottom: 5px !important;
@@ -1186,10 +1205,7 @@ MEDIA QUERIES*/
     .dashboard-menu a{
         padding: 0;
     }
-.auth-parent{
-    height: 30px;
- }
-
+    .account-btn{margin-right: 0 !important;}
     .table-parent{
         overflow-x: scroll;
     }
