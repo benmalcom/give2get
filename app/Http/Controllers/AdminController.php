@@ -135,4 +135,43 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function makeUserAdmin(Request $request)
+    {
+        $hashed_id = $request->get('id');
+        if(is_null($hashed_id)){
+            $this->setFlashMessage("User not found!",2);
+            return redirect()->back();
+        }
+        $user = User::where('hashed_id',$hashed_id)->first();
+        if(is_null($user)){
+            $this->setFlashMessage("User not found!",2);
+            return redirect()->back();
+        }
+        $user->user_type = 1;
+        $user->save();
+        $this->setFlashMessage("User is now an admin!",1);
+        return redirect()->back();
+    }
+
+
+    public function removeAdmin(Request $request)
+    {
+        $hashed_id = $request->get('id');
+        if(is_null($hashed_id)){
+            $this->setFlashMessage("User not found!",2);
+            return redirect()->back();
+        }
+        $user = User::where('hashed_id',$hashed_id)->first();
+        if(is_null($user)){
+            $this->setFlashMessage("User not found!",2);
+            return redirect()->back();
+        }
+        $user->user_type = 0;
+        $user->save();
+        $this->setFlashMessage("Admin privilege removed!",1);
+        return redirect()->back();
+    }
+
+
+
 }

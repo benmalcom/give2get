@@ -99,6 +99,13 @@ a{
 .mt-40 {
     margin-top: 40px !important;
 }
+.mt-30 {
+    margin-top: 30px !important;
+}
+
+.mt-25 {
+    margin-top: 25px !important;
+}
 
 .mt-20 {
     margin-top: 20px !important;
@@ -1039,6 +1046,10 @@ user profile*/
     border: 5px solid #fff;
 }
 
+.custom-bar{
+    background-color: #cbcbcb !important;
+}
+
 
 
 .text-yellow{
@@ -1163,6 +1174,24 @@ MEDIA QUERIES*/
         right: -70%; /* 6 columns */
         left: -70%; /* 6 columns */
         width: 70%; /* 6 columns */
+    }
+
+    .add-item-parent{
+        text-align: center !important;
+        margin: 0 0 !important;
+    }
+    .dashboard-menu{
+        padding: 5px 0;
+    }
+    .dashboard-menu a{
+        padding: 0;
+    }
+.auth-parent{
+    height: 30px;
+ }
+
+    .table-parent{
+        overflow-x: scroll;
     }
 
 }

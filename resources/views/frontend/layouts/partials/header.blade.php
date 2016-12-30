@@ -17,8 +17,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             {{--<a href="/items/add" class="pull-right mt-15"><i class="fa fa-plus"></i> Exchange your item</a>--}}
-            <p class="navbar-text navbar-right mr-5"><a href="/items/add" class="navbar-link btn btn-default"><i class="fa fa-plus"></i> Exchange your item</a></p>
-            <ul class="nav navbar-nav navbar-right mr-5">
+            <p class="navbar-text navbar-right mr-5 add-item-parent"><a href="/items/add" class="navbar-link btn btn-default"><i class="fa fa-plus text-custom"></i> Exchange your item</a></p>
+            <ul class="nav navbar-nav navbar-right mr-5 p-5">
                 <li ><a href="/"><i class="fa fa-home"></i> Home</a></li>
                 <li class="dropdown">
 
@@ -39,12 +39,12 @@
                                     <div class="col-sm-8">
                                         <p class="text-left"><strong>{{Auth::user()->fullName()}}</strong></p>
                                         <p class="text-left small">{{Auth::user()->email}}</p>
-                                        <div class="btn-group">
-                                            <a href="/profile" class="btn btn-default btn-sm">My Dashboard</a>
+                                        <p>
+                                            <a href="/profile" class="btn btn-default btn-sm"> My Dashboard</a>
                                             @if(Auth::user()->isAdmin())
-                                                <a href="/a/dashboard" class="btn btn-warning btn-sm">Admin</a>
+                                                <a href="/a/dashboard" class="btn btn-warning btn-sm"> Admin</a>
                                             @endif
-                                        </div>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -67,9 +67,11 @@
                         </li>
                     @else
                         <li>
-                            <div class="navbar-login list-group simplebox">
-                                <a href="/login" class="list-group-item"><strong>Login</strong></a>
-                                <a href="/register" class="list-group-item"><strong>Register</strong></a>
+                            <div class="navbar-login simplebox">
+                                <div class="btn-group btn-group-justified auth-parent" role="group" aria-label="...">
+                                    <a href="/login" class="btn btn-default btn-sm"><strong>Login</strong></a>
+                                    <a href="/register" class="btn btn-warning btn-sm"><strong>Register</strong></a>
+                                </div>
                             </div>
                         </li>
                     </ul>

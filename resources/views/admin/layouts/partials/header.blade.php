@@ -9,7 +9,7 @@
                 <!--Zircos-->
                 <!--</a>-->
                 <!-- Image Logo -->
-                <a href="/" class="logo"><i class="fa fa-exchange"></i>
+                <a href="/" class="logo" style="text-transform: capitalize;"><i class="fa fa-exchange"></i>
                     Give2get
                 </a>
 
@@ -69,6 +69,8 @@
                     <li><a href="/a/categories"><i class="fa fa-list"></i> Categories</a></li>
                     <li><a href="/a/transactions"><i class="fa fa-suitcase"></i> Transactions</a></li>
                     <li><a href="/a/users"><i class="fa fa-users"></i> Users</a></li>
+                    <li><a href="/"><i class="fa fa-home"></i> Homepage</a></li>
+
 
                 </ul>
                 <!-- End navigation menu -->

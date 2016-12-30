@@ -35,7 +35,25 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at->format('d M Y - H:i:s') }}</td>
 
+                    <td>
+                        @if($user->isAdmin())
+                            <form method="post" action="{{url('/a/remove-admin')}}">
+                            {{csrf_field()}}
+                                {{--<input type="hidden" name="_method" value="PATCH">--}}
+                            <input type="hidden" name="id" value="{{$user->hashed_id}}">
+                            <button type="submit" class="btn btn-warning btn-xs">Remove Admin</button>
+                        </form>
+                        @else
+                            <form method="post" action="{{url('/a/make-admin')}}">
+                                {{csrf_field()}}
+                                {{--<input type="hidden" name="_method" value="PATCH">--}}
+                                <input type="hidden" name="id" value="{{$user->hashed_id}}">
+                                <button type="submit" class="btn btn-success btn-xs">Make Admin</button>
+                            </form>
+                        @endif
+                    </td>
                     <td> <a class="label label-danger" href="/a/users/{{$user->hashed_id}}/delete">Delete</a> </td>
+
                 </tr>
                 @endforeach
             </tbody>

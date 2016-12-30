@@ -45,6 +45,8 @@ Route::group(['prefix' => 'a','middleware'=>['auth','admin']], function () {
 
     Route::get('users','AdminController@getUsers');
     Route::get('users/{hashed_id}/delete','AdminController@deleteUser');
+    Route::post('make-admin','AdminController@makeUserAdmin');
+    Route::post('remove-admin','AdminController@removeAdmin');
 
     Route::get('transactions','AdminController@getTransactions');
 });
