@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<div class="container-fluid clearfix" id="global-wrapper">
+<div class="container-fluid clearfix flex-box" id="global-wrapper">
     @include('frontend.layouts.partials.header')
     @yield('content')
 

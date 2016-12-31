@@ -2,10 +2,15 @@
 /*
 Custom styles*/
 body{
-    padding-top: 100px;
     /*font-family: 'Oxygen', sans-serif;*/
     font-family: 'Raleway', sans-serif;
     background-color: #F5F5F5;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 0;
+    padding-top: 100px;
 }
 a{
     text-decoration: none !important;
@@ -1157,7 +1162,16 @@ user profile*/
 }
 
 
-
+.flex-box{
+    flex: 1;
+}
+.footer-links li,.footer-links a{
+    display: inline-block;
+    list-style: circle !important;
+    margin: 2px;
+    text-decoration: underline;
+    color:#d5d5d5;
+}
 /*
 MEDIA QUERIES*/
 @media screen and (max-width: 768px) {

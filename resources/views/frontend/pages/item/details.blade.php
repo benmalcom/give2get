@@ -92,7 +92,7 @@
 
         </div>
       <div class="col-sm-10 col-sm-offset-1 mt-10">
-          <h3 class="text-muted">Similar items</h3>
+          <h3>Similar items</h3>
           <hr>
           <div class="row mb-10">
               @if(isset($similar) && count($similar) > 0)
