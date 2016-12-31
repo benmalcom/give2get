@@ -99,7 +99,7 @@ class ItemController extends Controller
         if(!is_null($item)){
             $item = $item->incrementViews();
         }
-        $similar = Item::where('category_id',$item->category->id)
+        $similar = Item::where('category_id',$item->category->id)->where('id', '!=' , $item->id)
             ->with('state')->with('poster')->with('images')
             ->take(4)->get();
         return view('frontend.pages.item.details',compact('item','similar'));
