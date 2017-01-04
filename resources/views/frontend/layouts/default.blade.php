@@ -27,12 +27,13 @@
 </head>
 
 <body>
-<div class="container-fluid clearfix flex-box" id="global-wrapper">
-    @include('frontend.layouts.partials.header')
-    @yield('content')
+        <div class="container-fluid clearfix mb-20" id="global-wrapper">
+            @include('frontend.layouts.partials.header')
+            @yield('content')
 
-</div>
-@include('frontend.layouts.partials.footer')
+        </div>
+    @include('frontend.layouts.partials.footer')
+
 
 <script src="{{asset('/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>

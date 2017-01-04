@@ -1,17 +1,31 @@
 /* here you can put your own css to customize and override the theme */
 /*
 Custom styles*/
+html{
+    position: relative;
+    min-height: 100%;
+}
 body{
     /*font-family: 'Oxygen', sans-serif;*/
     font-family: 'Raleway', sans-serif;
     background-color: #F5F5F5;
     margin: 0;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
     padding: 0;
-    padding-top: 100px;
+    margin-bottom: 60px;
+    padding-top: 95px;
 }
+/*Handle sticky footer*/
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
+
+/*End handle sticky footer*/
+
 a{
     text-decoration: none !important;
 }
@@ -1162,11 +1176,8 @@ user profile*/
 }
 
 
-.flex-box{
-    flex: 1;
-}
 .footer-links li,.footer-links a{
-    display: inline-block;
+    display: inline;
     list-style: circle !important;
     margin: 2px;
     text-decoration: underline;
@@ -1240,5 +1251,9 @@ MEDIA QUERIES*/
     .table-parent{
         overflow-x: scroll;
     }
+    footer{
+        height: auto;
+    }
+
 
 }

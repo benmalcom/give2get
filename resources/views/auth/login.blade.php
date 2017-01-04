@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 @section('content')
-    <div class="col-sm-4 col-sm-offset-4 p-20 shadow mt-100 bg-white">
+    <div class="col-sm-4 col-sm-offset-4 p-20 shadow mt-50 bg-white">
                     <h3 class="text-muted">My Account</h3>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

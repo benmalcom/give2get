@@ -1,3 +1,4 @@
+{{--
 <footer class="">
     <div class="container-fluid row p-10 m-0 mt-10 bg-slategray lter">
         <div class="col-sm-5 col-xs-12 text-center p-0">
@@ -17,5 +18,24 @@
                 <li><a>Jobs</a></li>
             </ul>
         </div>
+    </div>
+</footer>--}}
+<div class="clearfix"></div>
+
+<footer class="bg-slategray lter pt-10 pb-10 mt-20">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12 text-center p-0">
+                <ul class="text-muted footer-links">
+                    <li><a>Terms of Service</a></li>
+                    <li><a>Privacy Policy</a></li>
+                    <li><a>Copyright Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-xs-12 text-center p-0 pull-right">
+                <strong>&copy; 2016 and beyond, Give2get Inc.</strong>
+            </div>
+        </div>
+
     </div>
 </footer>
