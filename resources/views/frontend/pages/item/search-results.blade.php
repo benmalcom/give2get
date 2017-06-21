@@ -1,12 +1,8 @@
 @extends('frontend.layouts.default')
 @section('content')
-    <div class="row mt-10 row-offcanvas row-offcanvas-left">
-        @include('frontend.layouts.partials.categories-aside')
-
-        <div class="col-sm-9">
-            @include('frontend.layouts.partials.mobile-toggler')
+    <div class="container">
             @include('frontend.layouts.partials.search-filter-bar')
-            <div class="col-sm-12 row">
+            <div class="row">
                 @if(isset($items) && count($items) > 0)
                     @foreach($items as $item)
                         <div class="col-sm-3">
@@ -40,5 +36,4 @@
             </div>
 
         </div>
-    </div>
 @endsection

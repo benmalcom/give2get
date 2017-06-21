@@ -11,7 +11,7 @@
             <div class="form-group{{ $errors->has('verification_code') ? ' has-error' : '' }}">
 
                 <div class="col-sm-12">
-                    <input id="email" type="text" class="form-control simplebox input-lg" name="verification_code" value="{{ old('verification_code') }}" placeholder="Activation code" required autofocus>
+                    <input id="email" type="text" class="form-control simplebox" name="verification_code" value="{{ old('verification_code') }}" placeholder="Activation code" required autofocus>
 
                     @if ($errors->has('verification_code'))
                         <span class="help-block">
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-danger simplebox input-lg">
+                    <button type="submit" class="btn btn-danger simplebox">
                         Activate
                     </button>
                 </div>

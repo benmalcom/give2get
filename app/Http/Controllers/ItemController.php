@@ -194,11 +194,10 @@ class ItemController extends Controller
     public function getItemsByCategory($hashed_id)
     {
         //
-        $categories = Category::withCount(['items'])->get();
         $category = Category::where('hashed_id',$hashed_id)->first();
-        $info = ucwords($category->name);
-        $items = Item::where('category_id',$category->id)->with('category')->with('state')->with('poster')->with('images')->get();
-        return view('frontend.pages.item.search-results',compact('items','categories','info'));
+        $items = Item::where('category_id',$category->id)->with('category','state','poster','images')->take(8)->get();
+        $count = Item::where('category_id',$category->id)->count();
+        return view('frontend.pages.item.category-items',compact('items','category','count'));
     }
 
     /**
@@ -210,12 +209,17 @@ class ItemController extends Controller
     public function getItemSearchResult(Request $request)
     {
         //
-        $term = $request->get('s_t','');
-        $category_hashed_id = $request->get('s_c','');
+        $term = $request->get('term','');
+        $category_id = $request->get('category_id');
+        $state_id = $request->get('state_id');
         $query = Item::where('name','LIKE','%'.$term.'%');
-        if(isset($category_hashed_id) && strtolower($category_hashed_id) !="all"){
-            $category = Category::where('hashed_id',$category_hashed_id)->first();
-            if(!is_null($category)) $query->where('category_id',$category->id);
+        if(isset($category_id) && !empty($category_id)){
+            $query->where('category_id',$category_id);
+            //$category = Category::find($category_id);
+        }
+        if(isset($state_id) && !empty($state_id)){
+            $query->where('state_id',$state_id);
+            //$category = Category::find($category_id);
         }
 
         $items = $query->orderBy('created_at','desc')->get();

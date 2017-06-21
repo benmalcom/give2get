@@ -74,3 +74,9 @@ Route::group(['middleware'=>'auth'],function(){
 Route::get('items/{hashed_id}/details', 'ItemController@show');
 Route::get('categories/{hashed_id}/items', 'ItemController@getItemsByCategory');
 Route::get('/search', 'ItemController@getItemSearchResult');
+Route::get('/faqs', 'HomeController@getFaqs');
+Route::get('/how-it-works', 'HomeController@getHowItWorks');
+Route::get('/contact-us', 'HomeController@getContactUs');
+Route::post('/contact-us', 'HomeController@postContactUs');
+Route::get('/about-us', 'HomeController@getAboutUs');
+Route::get('/privacy-policy', 'HomeController@getPrivacyPolicy');

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Category;
+use App\Models\State;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->share('appName', 'SwapByBarter');
+        view()->share('categories', Category::withCount(['items'])->get());
+        view()->share('states', State::all());
     }
 
     /**

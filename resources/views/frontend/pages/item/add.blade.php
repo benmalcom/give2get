@@ -1,9 +1,9 @@
 @extends('frontend.layouts.default')
 @section('content')
 
-    <div class="col-sm-10 col-sm-offset-1 pt-30">
-            <div class="col-sm-12 simplebox mb-10 shadow-lite custom-bar">
-                <h4><strong>Add Your Item</strong></h4>
+    <div class="col-sm-8 col-sm-offset-2 pt-30">
+            <div class="col-sm-12 simplebox mb-10 shadow bg-white">
+                <h4 class="text-muted"><strong>Add Your Item</strong></h4>
                 <p class="text-danger"><i class="fa fa-info-circle"></i> The images cannot be changed later!</p>
             </div>
 
@@ -14,10 +14,10 @@
 
                     {{ csrf_field() }}
                     <div class="col-sm-6">
-                        <div class="col-sm-12 bg-white p-20 shadow-lite">
+                        <div class="col-sm-12 bg-white p-20 shadow">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control input-lg simplebox" name="name" value="{{ old('name') }}" placeholder="Type the name" autofocus>
+                                    <input type="text" class="form-control simplebox" required name="name" value="{{ old('name') }}" placeholder="Type the name" autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="help-block">
@@ -29,7 +29,7 @@
                             <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
 
                                 <div class="col-sm-12">
-                                    <select class="form-control input-lg simplebox" name="category_id" required>
+                                    <select class="form-control simplebox" name="category_id" required>
                                         <option value=""> -- Category --</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->id}}"> {{ucfirst($category->name)}}</option>
@@ -48,7 +48,7 @@
                             <div class="form-group{{ $errors->has('exchange') ? ' has-error' : '' }}">
 
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control input-lg simplebox" name="exchange" placeholder="What are you exchanging it for?" required>
+                                    <input type="text" class="form-control simplebox" name="exchange" placeholder="What are you exchanging it for?" required>
 
                                     @if ($errors->has('exchange'))
                                         <span class="help-block">
@@ -60,7 +60,7 @@
                             <div class="form-group{{ $errors->has('state_id') ? ' has-error' : '' }}">
 
                                 <div class="col-sm-12">
-                                    <select class="form-control input-lg simplebox" name="state_id" required>
+                                    <select class="form-control simplebox" name="state_id" required>
                                         <option value=""> -- Select state --</option>
                                         @foreach($states as $state)
                                             <option value="{{$state->id}}"> {{ucfirst($state->name)}}</option>
@@ -78,7 +78,7 @@
                             <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
 
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control input-lg simplebox" name="address" placeholder="Additional address e.g street name">
+                                    <input type="text" class="form-control simplebox" name="address" placeholder="Additional address e.g street name">
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">
@@ -90,7 +90,7 @@
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
 
                                 <div class="col-sm-12">
-                                    <textarea class="form-control input-lg simplebox" name="description" placeholder="Describe product(Optional)" rows="2"></textarea>
+                                    <textarea class="form-control simplebox" name="description" placeholder="Describe product(Optional)" rows="2"></textarea>
 
                                     @if ($errors->has('description'))
                                         <span class="help-block">
@@ -103,7 +103,7 @@
 
                     </div>
                     <div class="col-sm-6">
-                        <div class="col-sm-12 bg-white p-20 shadow-lite">
+                        <div class="col-sm-12 bg-white p-20 shadow">
                             <div class="row form-group">
                                 @for ($x = 0; $x < 4; $x++)
                                     <div class="col-sm-6 upload-container">
@@ -131,7 +131,7 @@
 
             <div class="form-group mt-5">
                 <div class="col-sm-12 mb-5">
-                    <button type="submit" class="btn btn-danger input-lg simplebox">
+                    <button type="submit" class="btn btn-danger simplebox">
                         Submit
                     </button>
                 </div>

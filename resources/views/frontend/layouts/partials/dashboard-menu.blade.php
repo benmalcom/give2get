@@ -1,10 +1,33 @@
-<div class="col-sm-10 col-sm-offset-1 bg-white mt-15 shadow-lite">
-    <div class="mt-20 text-black">
-        <ul class="nav nav-pills mb-20 dashboard-menu">
-            <li role="presentation" @if(Request::path() == "my-items")class="active"@endif><a href="/my-items">My Items</a></li>
-            <li role="presentation" @if(Request::path() == "my-transactions")class="active"@endif><a href="/my-transactions">My Transactions</a></li>
-            <li role="presentation" @if(Request::path() == "profile")class="active"@endif ><a href="/profile">Profile</a></li>
-            <li role="presentation" @if(Request::path() == "change-password")class="active"@endif><a href="/change-password">Change Password</a></li>
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">User section</h3>
+    </div>
+
+    <div class="panel-body">
+
+        <ul class="nav nav-pills nav-stacked">
+            <li @if(Request::path() == "profile")class="active"@endif>
+                <a href="{{'/profile'}}"><i class="fa fa-user"></i> My Profile</a>
+            </li>
+            <li @if(Request::path() == "change-password")class="active"@endif>
+                <a href="{{'/change-password'}}"><i class="fa fa-user-secret"></i> Change Password</a>
+            </li>
+            <li  @if(Request::path() == "my-items")class="active"@endif>
+                <a href="{{'/my-items'}}"><i class="fa fa-list"></i> My Items</a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i>
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
         </ul>
     </div>
+
 </div>

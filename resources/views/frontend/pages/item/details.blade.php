@@ -1,116 +1,214 @@
 @extends('frontend.layouts.default')
 @section('content')
+    <div id="content">
+        <div class="container">
 
-    <div class="col-sm-8 col-sm-offset-2 mt-30 mb-10 pt-30">
-                <div class="row">
-                    <div class="col-sm-8 mb-10">
-                        <div class="col-sm-12 bg-white p-20">
-                            <h4 class="text-custom">{{$item->name}}</h4>
-                            <p class="text-muted"><strong><i class="fa fa-map-marker"></i> {{$item->address.', '.$item->state->name}}</strong> | Added {{$item->created_at->diffForHumans()}}</p>
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li><a href="{{url('/')}}">Home</a>
+                    </li>
+                    <li><a href="{{url('/categories/'.$item->category->id.'/details')}}">{{$item->category->name}}</a>
+                    </li>
+                    <li>{{$item->name}}</li>
+                </ul>
 
-                            <div class="product-details-image col-sm-12 shadow-lite p-0">
-                                @if(isset($item->images) && count($item->images) > 0)
-                                    <img src="{{$item->images[0]->url}}" class="product-image-big" style="border: 4px solid #fff">
-                                @else
-                                    <img src="http://placehold.it/350x200" class="product-image-big" style="border: 4px solid #fff">
-                                @endif
-                            </div>
-                            <div><hr></div>
-                            <div class="mt-50">
-                                @if(isset($item->images) && count($item->images) > 0)
-                                    @foreach($item->images as $image)
-                                        <a href="#" data-image-url="{{$image->url}}" class="image-thumb-anchor">
-                                            <img src="{{$image->url}}" class="product-image-thumb shadow-lite">
-                                        </a>
-                                    @endforeach
-                                @endif
+            </div>
 
-                            </div>
-                        </div>
+            <div class="col-md-3">
+                <!-- *** MENUS AND FILTERS ***
+_________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Categories</h3>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="col-sm-12">
-                            <div class="list-group">
-                                <div class="list-group-item row product-detail-widget">
-                                    <div class="col-sm-3 col-xs-3 text-center bg-custom">
-                                        <i class="fa fa-exchange fa-3x"></i>
-                                    </div>
-                                    <div class="col-sm-9 col-xs-9 detail-parent text-muted"><p class="detail">{{ucwords($item->exchange)}}</p></div>
-                                </div>
 
-                                <div class="list-group-item row product-detail-widget">
-                                    <div class="col-sm-3 col-xs-3 text-center bg-warning">
-                                        <i class="fa fa-map-marker fa-3x"></i>
-                                    </div>
-                                    <div class="col-sm-9 col-xs-9 detail-parent">
-                                        <p class="detail text-muted">{{ucwords($item->address.','.$item->state->name)}}</p>
-                                    </div>
-                                </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-pills nav-stacked category-menu">
+                            @if(isset($categories) && count($categories) > 0)
+                                @foreach($categories as $category)
+                                    <li @if($item->category->id == $category->id) class="active" @endif>
+                                        <a href="/categories/{{$category->hashed_id}}/items"> {{ucfirst($category->name)}} <span class="badge pull-right">{{$category->items_count}}</span></a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="text-danger">No categories yet!</li>
+                            @endif
 
-                                <div class="list-group-item row product-detail-widget">
-                                    <div class="col-sm-3 col-xs-3 text-center bg-custom">
-                                        <i class="fa fa-tag fa-3x"></i>
-                                    </div>
-                                    <div class="col-sm-9 col-xs-9 detail-parent">
-                                        <p class="detail text-muted">{{ucwords($item->category->name)}}</p>
-                                    </div>
-                                </div>
+                        </ul>
 
-                                <div class="list-group-item row product-detail-widget">
-                                    <div class="col-sm-3 col-xs-3 text-center bg-info">
-                                        <i class="fa fa-eye fa-3x"></i>
-                                    </div>
-                                    <div class="col-sm-9 col-xs-9 detail-parent">
-                                        <p class="detail text-muted"><strong>{{$item->views}}</strong> times</p>
-                                    </div>
-                                </div>
-
-
-                                <div class="list-group-item row product-detail-widget">
-                                    <h4 class="text-muted"><strong>Poster</strong></h4>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-5 col-xs-5">
-                                            <img src="{{ !empty($item->poster->avatar_url)  ?  $item->poster->avatar_url : '/custom/img/no_photo_available.png'}}" style="margin: 0 auto; width: 100%; border-radius: 70px !important;">
-                                        </div>
-                                        <div class="col-sm-7 col-xs-7 bg-info">
-                                            <p class="text-muted"><strong>{{$item->poster->fullName()}}</strong></p>
-                                            <p>{{$item->poster->mobile}}</p>
-                                        </div>
-
-                                    </div>
-                                </div>
+                    </div>
+                </div>
 
                             </div>
 
+            <div class="col-md-9">
+
+                <div class="row" id="productMain">
+                    <div class="col-sm-6">
+                        <div id="mainImage">
+                            @if(isset($item->images) && count($item->images) > 0)
+                                <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                            @else
+                                <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                            @endif
                         </div>
 
+                        <div class="ribbon sale">
+                            <div class="theribbon">ITEM DETAILS</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                        <div class="row mt-30" id="thumbs">
+                            @if(isset($item->images) && count($item->images) > 0)
+                                @foreach($item->images as $image)
+                                    <div class="col-xs-4">
+                                        <a href="{{$image->url}}" class="thumb">
+                                            <img src="{{$image->url}}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="col-xs-4">
+                                    <a href="{{asset('custom/img/image_not_available.png')}}" class="thumb">
+                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="box">
+                            <h2 class="text-center text-muted">{{$item->name}}</h2>
+                            <p class="text-center"><label class="label label-info p-10" style="font-size: 10pt;">In exchange for <i class="fa fa-arrow-down"></i></label></p>
+
+                            <h3 class="text-center buttons">{{$item->exchange}}</h3>
+                            <p class="goToDescription"><a href="#details" class="scroll-to">Scroll down to item details</a></p>
+
+                        </div>
+
+                        {{--<div class="row" id="thumbs">
+                            @if(isset($item->images) && count($item->images) > 0)
+                                @foreach($item->images as $image)
+                                    <div class="col-xs-4">
+                                        <a href="{{$image->url}}" class="thumb">
+                                            <img src="{{$image->url}}" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="col-xs-4">
+                                    <a href="{{asset('custom/img/image_not_available.png')}}" class="thumb">
+                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            @endif
+                        </div>--}}
                     </div>
 
                 </div>
-                <div class="clearfix"></div>
 
+
+                <div class="box" id="details">
+                    <h4>Item details</h4>
+                    @if(!empty($item->description))
+                        <blockquote>{{$item->description}}</blockquote>
+                    @else
+                        <p class="text-danger">Nothing to show.</p>
+                    @endif
+
+
+                    <h4>Call owner</h4>
+                    @if(!empty($item->poster->mobile))
+                        <p>{{$item->poster->mobile}}</p>
+                    @else
+                        <p class="text-danger">Phone no. not available.</p>
+                    @endif
+
+                    <h4>Item location</h4>
+                    @if(!empty($item->state))
+                        <p>{{!empty($item->address) ? $item->address.', '.$item->state->name : $item->address}}</p>
+                    @else
+                        <p class="text-danger">Location details not available.</p>
+                    @endif
+
+                    <hr>
+                    <div class="social">
+                        <h4>Show it to your friends</h4>
+                        <p>
+                            <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row same-height-row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="box same-height">
+                            <h3>Similar items</h3>
+                        </div>
+                    </div>
+
+                    @if(isset($similar) && count($similar) > 0)
+                        @foreach($similar as $item)
+                            <div class="col-md-3 col-sm-6">
+                                <div class="product same-height">
+                                    <div class="flip-container">
+                                        <div class="flipper">
+                                            <div class="front">
+                                                <a href="/items/{{$item->hashed_id}}/details">
+                                                    @if(isset($item->images) && count($item->images) > 0)
+                                                        <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                                    @else
+                                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="/items/{{$item->hashed_id}}/details">
+                                                    @if(isset($item->images) && count($item->images) > 0)
+                                                        <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                                    @else
+                                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                    @endif
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="/items/{{$item->hashed_id}}/details" class="invisible">
+
+                                        @if(isset($item->images) && count($item->images) > 0)
+                                            <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                        @else
+                                            <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                        @endif
+                                    </a>
+                                    <div class="text">
+                                        <h3><a href="/items/{{$item->hashed_id}}/details">{{$item->name}}</a></h3>
+                                        <p class="price">{{$item->state->name}}</p>
+                                        <p class="price"><a href="/items/{{$item->hashed_id}}/details" class="btn btn-primary">View Details</a></p>
+                                    </div>
+                                </div>
+                                <!-- /.product -->
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="col-md-3 col-sm-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p class="text-info">No similar items available!</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endif
+
+            </div>
+            <!-- /.col-md-9 -->
         </div>
-      <div class="col-sm-10 col-sm-offset-1 mt-10">
-          <h3>Similar items</h3>
-          <hr>
-          <div class="row mb-10">
-              @if(isset($similar) && count($similar) > 0)
-                  @foreach($similar as $item)
-                      @include( 'frontend.layouts.partials.item' , [ 'item' => $item ] )
-                  @endforeach
-              @else
-                  <div class="col-sm-12">
-                      <div class="panel panel-default">
-                          <div class="panel-body">
-                              <p class="text-info">No similar items available!</p>
-                          </div>
-
-                      </div>
-                  </div>
-              @endif
-
-
-          </div>
-      </div>
+        <!-- /.container -->
+    </div>
+    </div>
 @endsection

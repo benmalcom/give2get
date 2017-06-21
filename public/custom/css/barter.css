@@ -1,30 +1,30 @@
-/* here you can put your own css to customize and override the theme */
 /*
-Custom styles*/
-html{
+!* here you can put your own css to customize and override the theme *!
+!*
+Custom styles*!
+html,body{
     position: relative;
     min-height: 100%;
-}
-body{
-    /*font-family: 'Oxygen', sans-serif;*/
-    font-family: 'Raleway', sans-serif;
-    background-color: #F5F5F5;
     margin: 0;
     padding: 0;
-    margin-bottom: 60px;
-    padding-top: 95px;
 }
-/*Handle sticky footer*/
+body{
+    !*font-family: 'Oxygen', sans-serif;*!
+    font-family: 'Raleway', sans-serif;
+    background-color: #F5F5F5;
+    padding-top: 50px;
+}
+!*Handle sticky footer*!
 
 footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 60px;
+    height: 50px;
     width: 100%;
 }
 
-/*End handle sticky footer*/
+!*End handle sticky footer*!
 
 a{
     text-decoration: none !important;
@@ -45,7 +45,7 @@ a{
 .btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active, .open>.dropdown-toggle.btn-custom {
     color: #fff;
     background-color: #1a8965;
-    border-color: #1c986f; /*set the color you want here*/
+    border-color: #1c986f; !*set the color you want here*!
 }
 .btn-custom:hover,.btn-custom:focus{
     background-color: #1b926c;
@@ -347,8 +347,8 @@ a{
 }
 
 
-/*
-Background colors*/
+!*
+Background colors*!
 
 .bg-white {
     background-color: white !important;
@@ -849,7 +849,7 @@ Background colors*/
     height: 200px !important;
 }
 .h-250{
-    height: 250px !important;
+   height: 250px !important;
 }
 .h-300{
     height: 300px !important;
@@ -872,7 +872,7 @@ Background colors*/
 }
 .simplebox, input, select, textarea {
     outline: none;
-    /*  border: none !important;*/
+    !*  border: none !important;*!
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
     box-shadow: none !important;
@@ -880,78 +880,183 @@ Background colors*/
 }
 .intl-tel-input{width: 100%;}
 
-/*
-Custom navbar rules*/
-.navbar-custom {
-    background-color: #fff;
+
+!*navbar-findcond*!
+nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+nav.navbar-findcond a { color: #1FA67A; }
+nav.navbar-findcond ul.navbar-nav a { color: #1FA67A; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover,
+nav.navbar-findcond ul.navbar-nav a:visited,
+nav.navbar-findcond ul.navbar-nav a:focus,
+nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover { border-color: #1FA67A; }
+nav.navbar-findcond li.divider { background: #ccc; }
+nav.navbar-findcond button.navbar-toggle { background: #1FA67A; border-radius: 2px; }
+nav.navbar-findcond button.navbar-toggle:hover { background: #999; }
+nav.navbar-findcond button.navbar-toggle > span.icon-bar { background: #fff; }
+nav.navbar-findcond ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
+nav.navbar-findcond ul.dropdown-menu > li > a { color: #444; }
+nav.navbar-findcond ul.dropdown-menu > li > a:hover { background: #1FA67A; color: #fff; }
+nav.navbar-findcond ul.dropdown-menu > li > a:hover span.badge { background: #fff; color: #1FA67A; }
+nav.navbar-findcond span.badge { background: #1FA67A; font-weight: normal; font-size: 11px; margin: 0 4px; }
+
+nav.navbar-findcond span.badge.new { background: #1FA67A; opacity: 0.8; color: #fff; }
+
+!* CSS used here will be applied after bootstrap.css *!
+
+!* Create a medium height at 40px *!
+.navbar-md {min-height:40px}
+.navbar-md .navbar-brand,
+.navbar-md .navbar-nav>li>a {padding-top:10px; padding-bottom:10px}
+.navbar-md .navbar-brand {height: 40px}
+.navbar-md .navbar-toggle {margin: 6px 12px 6px 0px; padding: 6px 7px 6px 7px;}
+.navbar-md .navbar-toggle .icon-bar {width: 19px;}
+
+
+!* Create a small height at 30px *!
+.navbar-sm {min-height:30px}
+.navbar-sm .navbar-brand,
+.navbar-sm .navbar-nav>li>a {padding-top:5px; padding-bottom:5px}
+.navbar-sm .navbar-brand {height: 30px}
+.navbar-sm .navbar-toggle {margin: 3px 9px 3px 0px; padding: 4px 4px 4px 4px;}
+.navbar-sm .navbar-toggle .icon-bar {width: 16px;}
+
+
+!*!//////////////////////User Profile///////////////////////////////////////////////////!*!
+
+!* Profile sidebar *!
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+    margin-right: 0px;
+}
+
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+    background-color: #fafcfd;
+    color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+    border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+    color: #5b9bd1;
+    background-color: #f6f9fb;
+    border-left: 2px solid #5b9bd1;
+    margin-left: -2px;
+}
+
+!* Profile Content *!
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
+
+
+
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
     border-radius: 0;
-    border:none;
+    margin-left: -1px;
 }
-.navbar-fixed-top{
-    top: 30px;
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
-
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-brand:hover,
-.navbar-custom .navbar-brand:focus {
-    color: #FFF;
+.btn-group .form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
-
-.navbar-custom .navbar-nav > li > a {
-    color: #777;
-    background: none;
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
 }
-
-
-.navbar-custom .navbar-nav > li > a:hover,
-.navbar-custom .navbar-nav > li > a:focus {
-    color: #1FA67A;
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 
-.navbar-custom .navbar-nav > .active > a,
-.navbar-custom .navbar-nav > .active > a:hover,
-.navbar-custom .navbar-nav > .active > a:focus {
-    color: #1FA67A;
-}
-
-.navbar-custom .navbar-text {
-    color: #777;
-}
-
-.navbar-custom .navbar-toggle {
-    border-color: #1FA67A !important;
-}
-
-.navbar-custom .navbar-toggle:hover,
-.navbar-custom .navbar-toggle:focus {
-    background-color: #1FA67A;
-}
-
-.navbar-custom .navbar-toggle .icon-bar {
-    background-color: #FFF;
-}
-
-/*
-.navbar li .dropdown-menu li:not(':') a:hover,.navbar li .dropdown-menu li a:active{
-    color:#1FA67A !important;
-}
-*/
 
 
-.navbar-nav > li > a {
-    /*padding-top:18px !important; padding-bottom:18px !important;*/
-    color: #999;
-    line-height: 30px;
-}
-
-.navbar > .container-fluid .navbar-brand {
-    color: #1FA67A;
-    font-size: 25px !important;
-    margin: 8px 0 !important;
-    margin-left: 72px !important;
-}
-/*
-user profile*/
+!*
+user profile*!
 .navbar-login
 {
     width: 305px;
@@ -977,9 +1082,9 @@ user profile*/
     margin: 3px 0;
     padding-bottom: 10px;
     box-shadow: rgba(0,0,0,0.2) 0 0 1px !important;
-    background-color: #ffffff;/*
+    background-color: #ffffff;!*
     background-clip: padding-box;
-    border: 10px solid transparent;*/
+    border: 10px solid transparent;*!
 }
 .product-outer:hover{
     box-shadow: rgba(0,0,0,0.2) 0 0 4px !important;
@@ -1026,7 +1131,7 @@ user profile*/
 
 .detail-parent{
     display: table;
-    /*text-align: center*/;
+    !*text-align: center*!;
 }
 .detail-parent > .detail{
     display: table-cell;
@@ -1046,11 +1151,7 @@ user profile*/
     width: 100% !important;
 }
 
-/*FileAPI upload preview*/
-.avatar{
-    width: 100% !important;
-    height: 250px !important;
-}
+!*FileAPI upload preview*!
 
 .file-upload {
     position: relative;
@@ -1110,7 +1211,7 @@ user profile*/
 
 
 
-/*Search box animateMotion bar*/
+!*Search box animateMotion bar*!
 #custom-search-input {
     margin:0;
     margin-top: 10px;
@@ -1122,7 +1223,7 @@ user profile*/
     padding-right: 4px \9;
     padding-left: 3px;
     padding-left: 4px \9;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    !* IE7-8 doesn't have border-radius, so don't indent the padding *!
 
     margin-bottom: 0;
 }
@@ -1130,12 +1231,12 @@ user profile*/
 #custom-search-input button {
     border: 0;
     background: none;
-    /** belows styles are working good */
+    !** belows styles are working good *!
     padding: 2px 5px;
     margin-top: 2px;
     position: relative;
     left: -28px;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
+    !* IE7-8 doesn't have border-radius, so don't indent the padding *!
     margin-bottom: 0;
     color:#D9230F;
 }
@@ -1166,15 +1267,101 @@ user profile*/
     color: #fff !important;
 }
 
-#first{
-    z-index: 5000;
-    width: 100%;
-    height: 30px!important;
-    top: 0;
-    left: 0;
-    position: fixed;"
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+.home{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    !*-ms-flex-align: center;*!
+
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+#home{
+    background: url("../img/intro-bg-2.jpg") no-repeat scroll center top/ cover;
+    min-height: 100vh;
 }
 
+
+.intro-content .sub-tag {
+    color: #f1f1f1;
+    font-family: "Droid Serif",serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.intro-content > h1 {
+    color: #ffffff;
+    font-family: 'Anton', sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+    word-spacing: 5px;
+}
+
+.intro-content > a > i.lnr{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.intro-content > p {
+    color: #eeeeee;
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 565px;
+}
+
+.intro .carousel-indicators {
+    bottom: 0;
+    margin-bottom: -20%;
+}
+
+.intro .carousel-indicators li{
+    background-color: #5BBE97;
+    border: 2px solid #5BBE97;
+    height: 15px;
+    width: 15px;
+    margin: 4px;
+}
+
+.intro .carousel-indicators .active {
+    background-color: #ffffff;
+    border: 3px solid #ffffff !important;
+    height: 13px;
+    margin: 5px;
+    width: 13px;
+}
+
+.plain-text{
+    text-transform: none !important;
+}
 
 .footer-links li,.footer-links a{
     display: inline;
@@ -1183,70 +1370,40 @@ user profile*/
     text-decoration: underline;
     color:#d5d5d5;
 }
-/*
-MEDIA QUERIES*/
+!*
+MEDIA QUERIES*!
 @media screen and (max-width: 768px) {
     .navbar-custom .navbar-toggle {
         background-color: #1FA67A !important;
     }
-    .navbar-nav li  a {
+    !*.navbar-nav li  a {
         line-height: 0;
         display: inline;
         padding: 3px;
-    }
-    /*
+    }*!
+    !*
 
     .navbar-login  a {
         line-height: 0;
         display: block;
     }
-    */
+    *!
+
 
     .product-outer{
         margin-bottom: 5px !important;
-    }
-
-    .row-offcanvas {
-        position: relative;
-        -webkit-transition: all .25s ease-out;
-        -o-transition: all .25s ease-out;
-        transition: all .25s ease-out;
-    }
-
-    .row-offcanvas-right {
-        right: 0;
-    }
-
-    .row-offcanvas-left {
-        left: 0;
-    }
-
-    .row-offcanvas-right.active {
-        right: 70%; /* 6 columns */
-    }
-
-    .row-offcanvas-left.active {
-        left: 70%; /* 6 columns */
-    }
-
-    .sidebar-offcanvas {
-        position: absolute;
-        top: 0;
-        right: -70%; /* 6 columns */
-        left: -70%; /* 6 columns */
-        width: 70%; /* 6 columns */
     }
 
     .add-item-parent{
         text-align: center !important;
         margin: 0 0 !important;
     }
-    .dashboard-menu{
+   !* .dashboard-menu{
         padding: 5px 0;
     }
     .dashboard-menu a{
         padding: 0;
-    }
+    }*!
     .account-btn{margin-right: 0 !important;}
     .table-parent{
         overflow-x: scroll;
@@ -1254,6 +1411,7 @@ MEDIA QUERIES*/
     footer{
         height: auto;
     }
-
-
-}
+    .search-bar{
+        width: 100% !important;
+    }
+}*/
