@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('avatar_url');
             $table->string('avatar_public_id');
             $table->string('mobile');
-            $table->string('hashed_id');
             $table->unsignedInteger('user_type')->default(0);
             $table->boolean('account_verified')->default(false);
             $table->boolean('active')->default(false);

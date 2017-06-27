@@ -18,7 +18,6 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('item_id');
             $table->unsignedInteger('seller_id');
             $table->unsignedInteger('buyer_id');
-            $table->string('hashed_id');
 
             $table->boolean('completed')->default(true);
             $table->timestamps();

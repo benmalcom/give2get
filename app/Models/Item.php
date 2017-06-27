@@ -8,7 +8,7 @@ class Item extends Model
 {
     //
     protected $fillable = [
-        'name', 'description','category_id', 'exchange','address','state_id','user_id','visible','hashed_id'
+        'name', 'description','category_id', 'exchange','address','state_id','user_id','visible'
     ];
 
     public function poster(){

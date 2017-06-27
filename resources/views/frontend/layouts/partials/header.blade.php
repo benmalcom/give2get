@@ -1,7 +1,7 @@
 <div id="top">
     <div class="container">
         <div class="col-md-6 offer" data-animate="fadeInDown">
-            <a href="#">Advertise your product </a> <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Request for quote</a>
+            <a href="#">Put your item first </a> <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Request for quote</a>
         </div>
         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">

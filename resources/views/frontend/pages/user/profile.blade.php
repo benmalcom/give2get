@@ -88,13 +88,13 @@
                                 <form method="POST" action="{{ url('/profile/avatar') }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                             <!-- SIDEBAR USERPIC -->
-                                    {{--<div class="profile-userpic">
+                                    <div class="profile-userpic">
                                         <img src="{{ !empty($user->avatar_url)  ?  $user->avatar_url : '/custom/img/no_photo_available.png'}}" class="img-responsive avatar br-4" style="border: 2px double darkgrey;" alt="">
-                                    </div>--}}
-                                    <div>
-                                        <img src="{{ !empty($user->avatar_url)  ?  $user->avatar_url : '/custom/img/no_photo_available.png'}}" class="img-thumbnail  img-responsive" alt="">
-
                                     </div>
+                                    {{--<div>
+                                        <img src="{{ !empty($user->avatar_url)  ?  $user->avatar_url : '/custom/img/no_photo_available.png'}}" class="img-thumbnail avatar img-responsive" alt="">
+
+                                    </div>--}}
                                     <!-- END SIDEBAR USER PIC -->
                                     <!-- SIDEBAR USER TITLE -->
                                     <!-- END SIDEBAR USER TITLE -->

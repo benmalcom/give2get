@@ -56,6 +56,7 @@
         _________________________________________________________ -->
                 <div id="hot">
 
+{{--
                     <div class="box">
                         <div class="container">
                             <div class="col-md-12">
@@ -63,6 +64,7 @@
                             </div>
                         </div>
                     </div>
+--}}
 
                     <div class="container">
                         <div class="product-slider">
@@ -112,14 +114,8 @@
 
                                 @endforeach
                             @else
-                                <div class="col-sm-12">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <p class="text-danger">No item available at this point!</p>
-                                        </div>
 
-                                    </div>
-                                </div>
+
                             @endif
 
 

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\State;
+use Hashids\Hashids;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,9 +17,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        view()->share('appName', 'SwapByBarter');
-        view()->share('categories', Category::withCount(['items'])->get());
-        view()->share('states', State::all());
+        if(!\App::runningInConsole()){
+            view()->share('hashIds', new Hashids(env('APP_KEY'), 25, env('APP_CHAR')));
+            view()->share('appName', 'TradeByBarter');
+            view()->share('categories', Category::withCount(['items'])->get());
+            view()->share('states', State::all());
+        }
     }
 
     /**
