@@ -53,10 +53,10 @@
                                                     <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
                                                 @endif
                                             </a>
-                                            <div class="text">
-                                                <h3><a href="/items/{{$hashIds->encode($item->id)}}/details">{{$item->name}}</a></h3>
+                                            <div class="text m-0">
+                                                <h4 class="m-5 text-center"><a href="/items/{{$hashIds->encode($item->id)}}/details">{{$item->name}}</a></h4>
                                                 <p class="price"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
-                                                <p class="buttons"><a href="/items/{{$hashIds->encode($item->id)}}/details" class="btn btn-primary">View Details</a></p>
+                                                <p class="buttons m-5 text-center"><a href="/items/{{$hashIds->encode($item->id)}}/details" class="btn btn-primary btn-sm">View Details</a></p>
                                             </div>
                                             <!-- /.text -->
                                         </div>

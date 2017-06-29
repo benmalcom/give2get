@@ -33,7 +33,7 @@
                                     <div class="flip-container">
                                         <div class="flipper">
                                             <div class="front">
-                                                <a href="/items/{{$item->hashed_id}}/details">
+                                                <a href="/items/{{$hashIds->encode($item->id)}}/details">
 
                                                     @if(isset($item->images) && count($item->images) > 0)
                                                         <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
@@ -43,7 +43,7 @@
                                                 </a>
                                             </div>
                                             <div class="back">
-                                                <a href="/items/{{$item->hashed_id}}/details">
+                                                <a href="/items/{{$hashIds->encode($item->id)}}/details">
                                                     @if(isset($item->images) && count($item->images) > 1)
                                                         <img src="{{$item->images[1]->url}}" alt="" class="img-responsive">
                                                     @else
@@ -53,25 +53,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="/items/{{$item->hashed_id}}/details" class="invisible">
+                                    <a href="/items/{{$hashIds->encode($item->id)}}/details" class="invisible">
                                         @if(isset($item->images) && count($item->images) > 0)
                                             <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
                                         @else
                                             <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
                                         @endif
                                     </a>
-                                    <div class="text">
-                                        <h3><a href="/items/{{$item->hashed_id}}/details">{{$item->name}}</a></h3>
-                                        {{--<p class="price"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>--}}
-                                        <p class="buttons">
-                                            <a href="/items/{{$item->hashed_id}}/details" class="label label-default"> Details</a>
-                                            <a href="/items/{{$item->hashed_id}}/edit" class="label label-info"><i class="fa fa-pencil"></i> Edit</a>
-                                            <a href="/items/{{$item->hashed_id}}/delete" class="label label-danger"><i class="fa fa-trash"></i> Delete</a>
-                                        </p>
+                                    <div class="text m-0">
+                                        <h4 class="m-5 text-center"><a href="/items/{{$hashIds->encode($item->id)}}/details">{{$item->name}}</a></h4>
+                                        <p class="price"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
+                                        <p class="buttons m-5 text-center"><a href="/items/{{$hashIds->encode($item->id)}}/details" class="btn btn-primary btn-sm">View Details</a></p>
                                     </div>
                                     <!-- /.text -->
-                                </div>
-                                <!-- /.product -->
+                                </div>                                <!-- /.product -->
                             </div>
                             @endforeach
                         @else

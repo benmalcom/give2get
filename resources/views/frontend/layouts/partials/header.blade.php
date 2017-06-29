@@ -75,7 +75,7 @@ _________________________________________________________ -->
                     <ul class="dropdown-menu">
                             @if(isset($categories) && count($categories) > 0)
                                 @foreach($categories as $category)
-                                <li><a href="/categories/{{$category->hashed_id}}/items"> {{ucfirst($category->name)}}</a>
+                                <li><a href="/categories/{{$hashIds->encode($category->id)}}/items"> {{ucfirst($category->name)}}</a>
                                 @endforeach
 
                             @else
