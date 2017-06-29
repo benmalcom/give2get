@@ -16,10 +16,8 @@ class AdminController extends Controller
 {
     //
 
-    public function __construct(HashidsManager $hashids)
-    {
-        $this->hashids = $hashids;
-    }
+    public function __construct()
+    {}
 
     public function getDashboard()
     {
@@ -59,7 +57,6 @@ class AdminController extends Controller
         }
         $category = new Category();
         $category->name = $inputs['name'];
-        $category->hashed_id = $this->hashids->encode(time());
         $category->save();
         $this->setFlashMessage("You added a new category",1);
         return redirect()->back();
@@ -67,14 +64,14 @@ class AdminController extends Controller
 
     public function deleteCategory($hashed_id)
     {
-        $id = $this->hashids->decode($hashed_id);
+        $id = $this->getHashIds()->decode($hashed_id)[0];
         Category::destroy($id);
         $this->setFlashMessage("Category deleted",1);
         return redirect()->back();
     }
     public function editCategory($hashed_id)
     {
-        $id = $this->hashids->decode($hashed_id)[0];
+        $id = $this->getHashIds()->decode($hashed_id)[0];
         $category = Category::find($id);
         return view('admin.category.edit', compact('category'));
     }
@@ -82,11 +79,12 @@ class AdminController extends Controller
     public function postEditCategory(Request $request)
     {
         $inputs = $request->all();
-        $id = $this->hashids->decode($inputs['hashed_id']);
+        $id = $this->getHashIds()->decode($inputs['hashed_id'])[0];
         unset($inputs['_token']);
-        Category::where('id',$id)->update($inputs);
+        unset($inputs['hashed_id']);
+        Category::find($id)->update($inputs);
         $this->setFlashMessage("Category updated",1);
-        return redirect('/a/categories');
+        return redirect('/admin/categories');
     }
 
     public function getItems()
@@ -98,7 +96,7 @@ class AdminController extends Controller
 
     public function deleteItem($hashed_id)
     {
-        $id = $this->hashids->decode($hashed_id);
+        $id = $this->getHashIds()->decode($hashed_id)[0];
         Item::destroy($id);
         $this->setFlashMessage("Item deleted",1);
         return redirect()->back();
@@ -114,7 +112,7 @@ class AdminController extends Controller
 
     public function deleteUser($hashed_id)
     {
-        $id = $this->hashids->decode($hashed_id);
+        $id = $this->getHashIds()->decode($hashed_id)[0];
         User::destroy($id);
         $this->setFlashMessage("User deleted",1);
         return redirect()->back();
@@ -129,7 +127,7 @@ class AdminController extends Controller
 
     public function deleteTransaction($hashed_id)
     {
-        $id = $this->hashids->decode($hashed_id);
+        $id = $this->getHashIds()->decode($hashed_id);
         Transaction::destroy($id);
         $this->setFlashMessage("Transaction deleted",1);
         return redirect()->back();
@@ -137,12 +135,13 @@ class AdminController extends Controller
 
     public function makeUserAdmin(Request $request)
     {
-        $hashed_id = $request->get('id');
+        $hashed_id = $request->get('encode');
         if(is_null($hashed_id)){
             $this->setFlashMessage("User not found!",2);
             return redirect()->back();
         }
-        $user = User::where('hashed_id',$hashed_id)->first();
+        $id = $this->getHashIds()->decode($hashed_id)[0];
+        $user = User::find($id);
         if(is_null($user)){
             $this->setFlashMessage("User not found!",2);
             return redirect()->back();
@@ -156,12 +155,13 @@ class AdminController extends Controller
 
     public function removeAdmin(Request $request)
     {
-        $hashed_id = $request->get('id');
+        $hashed_id = $request->get('encode');
         if(is_null($hashed_id)){
             $this->setFlashMessage("User not found!",2);
             return redirect()->back();
         }
-        $user = User::where('hashed_id',$hashed_id)->first();
+        $id = $this->getHashIds()->decode($hashed_id)[0];
+        $user = User::find($id);
         if(is_null($user)){
             $this->setFlashMessage("User not found!",2);
             return redirect()->back();

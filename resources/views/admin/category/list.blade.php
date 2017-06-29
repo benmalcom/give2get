@@ -10,11 +10,10 @@
     </div>
 </div>
 <!-- end page title end breadcrumb -->
-@include('frontend.layouts.partials.message')
 @include('errors.errors')
 
 <div class="col-sm-8 col-sm-offset-2">
-    <form class="form-inline" role="form" method="post" action="/a/categories">
+    <form class="form-inline" role="form" method="post" action="/admin/categories">
         {{ csrf_field() }}
         <div class="form-group">
             <label class="sr-only">Category name</label>
@@ -42,8 +41,8 @@
                     <th scope="row">{{ $index+1 }}</th>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->items_count }}</td>
-                    <td> <a class="label label-info" href="/a/categories/{{$category->hashed_id}}/edit">Edit</a> </td>
-                    <td> <a class="label label-danger" href="/a/categories/{{$category->hashed_id}}/delete">Delete</a> </td>
+                    <td> <a class="label label-info" href="/admin/categories/{{$hashIds->encode($category->id)}}/edit">Edit</a> </td>
+                    <td> <a class="label label-danger" href="/admin/categories/{{$hashIds->encode($category->id)}}/delete">Delete</a> </td>
                 </tr>
                 @endforeach
             </tbody>

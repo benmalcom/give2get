@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        return $this->user_type > 0;
+        return $this->user_type == 1;
     }
 
     public function isVerified(){

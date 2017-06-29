@@ -10,7 +10,6 @@
     </div>
 </div>
 <!-- end page title end breadcrumb -->
-@include('frontend.layouts.partials.message')
 @include('errors.errors')
 
 @if(isset($users) && count($users) > 0)
@@ -37,22 +36,22 @@
 
                     <td>
                         @if($user->isAdmin())
-                            <form method="post" action="{{url('/a/remove-admin')}}">
+                            <form method="post" action="{{url('admin/remove')}}">
                             {{csrf_field()}}
                                 {{--<input type="hidden" name="_method" value="PATCH">--}}
-                            <input type="hidden" name="id" value="{{$user->hashed_id}}">
+                            <input type="hidden" name="encode" value="{{$hashIds->encode($user->id)}}">
                             <button type="submit" class="btn btn-warning btn-xs">Remove Admin</button>
                         </form>
                         @else
-                            <form method="post" action="{{url('/a/make-admin')}}">
+                            <form method="post" action="{{url('/admin/make')}}">
                                 {{csrf_field()}}
                                 {{--<input type="hidden" name="_method" value="PATCH">--}}
-                                <input type="hidden" name="id" value="{{$user->hashed_id}}">
+                                <input type="hidden" name="id" value="{{$hashIds->encode($user->id)}}">
                                 <button type="submit" class="btn btn-success btn-xs">Make Admin</button>
                             </form>
                         @endif
                     </td>
-                    <td> <a class="label label-danger" href="/a/users/{{$user->hashed_id}}/delete">Delete</a> </td>
+                    <td> <a class="label label-danger" href="/a/users/{{$hashIds->encode($user->id)}}/delete">Delete</a> </td>
 
                 </tr>
                 @endforeach

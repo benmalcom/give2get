@@ -28,7 +28,7 @@ _________________________________________________________ -->
                             @if(isset($categories) && count($categories) > 0)
                                 @foreach($categories as $category)
                                     <li @if($item->category->id == $category->id) class="active" @endif>
-                                        <a href="/categories/{{$category->hashed_id}}/items"> {{ucfirst($category->name)}} <span class="badge pull-right">{{$category->items_count}}</span></a>
+                                        <a href="/categories/{{$hashIds->encode($category->id)}}/items" title="{{ $category->name }}"> {{ shorten(ucfirst($category->name)) }} <span class="badge pull-right">{{$category->items_count}}</span></a>
                                     </li>
                                 @endforeach
                             @else
@@ -55,7 +55,7 @@ _________________________________________________________ -->
                         </div>
 
                         <div class="ribbon sale">
-                            <div class="theribbon">ITEM DETAILS</div>
+                            <div class="theribbon">ITEM PHOTO</div>
                             <div class="ribbon-background"></div>
                         </div>
                         <!-- /.ribbon -->
@@ -122,14 +122,14 @@ _________________________________________________________ -->
 
                     <h4>Call owner</h4>
                     @if(!empty($item->poster->mobile))
-                        <p>{{$item->poster->mobile}}</p>
+                        <blockquote>{{$item->poster->mobile}}</blockquote>
                     @else
                         <p class="text-danger">Phone no. not available.</p>
                     @endif
 
                     <h4>Item location</h4>
                     @if(!empty($item->state))
-                        <p>{{!empty($item->address) ? $item->address.', '.$item->state->name : $item->address}}</p>
+                        <blockquote>{{!empty($item->address) ? $item->address.', '.$item->state->name : $item->address}}</blockquote>
                     @else
                         <p class="text-danger">Location details not available.</p>
                     @endif
@@ -158,7 +158,7 @@ _________________________________________________________ -->
                                     <div class="flip-container">
                                         <div class="flipper">
                                             <div class="front">
-                                                <a href="/items/{{$item->hashed_id}}/details">
+                                                <a href="/items/{{$hashIds->encode($item->id)}}/details">
                                                     @if(isset($item->images) && count($item->images) > 0)
                                                         <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
                                                     @else
@@ -167,7 +167,7 @@ _________________________________________________________ -->
                                                 </a>
                                             </div>
                                             <div class="back">
-                                                <a href="/items/{{$item->hashed_id}}/details">
+                                                <a href="/items/{{$hashIds->encode($item->id)}}/details">
                                                     @if(isset($item->images) && count($item->images) > 0)
                                                         <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
                                                     @else
@@ -186,9 +186,9 @@ _________________________________________________________ -->
                                         @endif
                                     </a>
                                     <div class="text">
-                                        <h3><a href="/items/{{$item->hashed_id}}/details">{{$item->name}}</a></h3>
+                                        <h3><a href="/items/{{$hashIds->encode($item->id)}}/details">{{$item->name}}</a></h3>
                                         <p class="price">{{$item->state->name}}</p>
-                                        <p class="price"><a href="/items/{{$item->hashed_id}}/details" class="btn btn-primary">View Details</a></p>
+                                        <p class="price"><a href="/items/{{$hashIds->encode($item->id)}}/details" class="btn btn-primary">View Details</a></p>
                                     </div>
                                 </div>
                                 <!-- /.product -->

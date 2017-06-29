@@ -10,7 +10,6 @@
     </div>
 </div>
 <!-- end page title end breadcrumb -->
-@include('frontend.layouts.partials.message')
 @include('errors.errors')
 
 @if(isset($items) && count($items) > 0)
@@ -34,9 +33,9 @@
                     <td>{{ $item->category->name }}</td>
                     <td>{{ $item->exchange }}</td>
                     <td>{{ $item->state->name }}</td>
-                    <td><a href="/items/{{$item->hashed_id}}/details" class="label label-default"><i class="fa fa-info-circle"></i> Details</a>
+                    <td><a href="/items/{{$item->hashed_id}}/details" class="label label-default"><i class="fa fa-info-circle"></i> Details on main site</a>
                     </td>
-                    <td> <a class="label label-danger" href="/a/items/{{$item->hashed_id}}/delete"><i class="fa fa-trash"></i> Delete</a> </td>
+                    <td> <a class="label label-danger" href="/admin/items/{{$hashIds->encode($item->id)}}/delete"><i class="fa fa-trash"></i> Delete</a> </td>
                 </tr>
             @endforeach
             </tbody>

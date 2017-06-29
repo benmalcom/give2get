@@ -10,7 +10,6 @@
     </div>
 </div>
 <!-- end page title end breadcrumb -->
-@include('frontend.layouts.partials.message')
 @include('errors.errors')
 
 @if(isset($transactions) && count($transactions) > 0)
@@ -35,7 +34,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at->format('d M Y - H:i:s') }}</td>
 
-                    <td> <a class="label label-danger" href="/a/users/{{$user->hashed_id}}/delete">Delete</a> </td>
+                    <td> <a class="label label-danger" href="/a/users/{{$hashIds->encode($user->id)}}/delete">Delete</a> </td>
                 </tr>
             @endforeach
             </tbody>

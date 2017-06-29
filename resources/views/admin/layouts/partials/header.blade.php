@@ -62,13 +62,13 @@
                 <ul class="navigation-menu">
 
                     <li>
-                        <a href="/a/dashboard"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
+                        <a href="/admin/dashboard"><i class="mdi mdi-view-dashboard"></i> Dashboard</a>
                     </li>
 
-                    <li><a href="/a/items"><i class="fa fa-shopping-cart"></i> Items</a></li>
-                    <li><a href="/a/categories"><i class="fa fa-list"></i> Categories</a></li>
-                    <li><a href="/a/transactions"><i class="fa fa-suitcase"></i> Transactions</a></li>
-                    <li><a href="/a/users"><i class="fa fa-users"></i> Users</a></li>
+                    <li><a href="/admin/items"><i class="fa fa-shopping-cart"></i> Items</a></li>
+                    <li><a href="/admin/categories"><i class="fa fa-list"></i> Categories</a></li>
+                    <li><a href="/admin/transactions"><i class="fa fa-suitcase"></i> Transactions</a></li>
+                    <li><a href="/admin/users"><i class="fa fa-users"></i> Users</a></li>
                     <li><a href="/"><i class="fa fa-home"></i> Homepage</a></li>
 
 

@@ -73,11 +73,16 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'verification_code' => strtoupper(str_random(6)),
-            'hashed_id' => $this->hashids->encode(time())
+            'verification_code' => strtoupper(str_random(6))
         ]);
 
-        try{
+        $data = ['verification_code'=>$user->verification_code,'first_name'=>$user->first_name];
+        Mail::send('email.verify',$data, function($message) use ($user) {
+            $message->to($user->email)
+                ->subject('Account confirmation code');
+        });
+
+        /*try{
             $data = ['verification_code'=>$user->verification_code,'first_name'=>$user->first_name];
              Mail::send('email.verify',$data, function($message) use ($user) {
                  $message->to($user->email)
@@ -86,7 +91,7 @@ class RegisterController extends Controller
         }
         catch(\Exception $e){
             // catch code
-        }
+        }*/
 
         return $user;
     }

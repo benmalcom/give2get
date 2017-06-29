@@ -39,7 +39,7 @@
                                 <div class="flip-container">
                                     <div class="flipper">
                                         <div class="front">
-                                            <a href="/items/{{$item->hashed_id}}/details">
+                                            <a href="/items/{{$hashIds->encode($item->id)}}/details">
 
                                                 @if(isset($item->images) && count($item->images) > 0)
                                                     <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
@@ -49,7 +49,7 @@
                                             </a>
                                         </div>
                                         <div class="back">
-                                            <a href="/items/{{$item->hashed_id}}/details">
+                                            <a href="/items/{{$hashIds->encode($item->id)}}/details">
                                                 @if(isset($item->images) && count($item->images) > 1)
                                                     <img src="{{$item->images[1]->url}}" alt="" class="img-responsive">
                                                 @else
@@ -69,7 +69,7 @@
                                 <div class="text">
                                     <h3><a href="/items/{{$item->hashed_id}}/details">{{$item->name}}</a></h3>
                                     <p class="price"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
-                                    <p class="buttons"><a href="/items/{{$item->hashed_id}}/details" class="btn btn-primary">View Details</a></p>
+                                    <p class="buttons"><a href="/items/{{$hashIds->encode($item->id)}}/details" class="btn btn-primary">View Details</a></p>
                                 </div>
                                 <!-- /.text -->
                             </div>

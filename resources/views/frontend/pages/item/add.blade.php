@@ -1,7 +1,7 @@
 @extends('frontend.layouts.default')
 @section('content')
 
-    <div class="col-sm-8 col-sm-offset-2 pt-30">
+    <div class="col-sm-8 col-sm-offset-2">
             <div class="col-sm-12 simplebox mb-10 shadow bg-white">
                 <h4 class="text-muted"><strong>Add Your Item</strong></h4>
                 <p class="text-danger"><i class="fa fa-info-circle"></i> The images cannot be changed later!</p>

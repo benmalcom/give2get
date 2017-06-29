@@ -10,7 +10,7 @@
                     <form class="form-horizontal" method="post" action="{{url('/items/update')}}"
                           enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <input type="hidden" name="hashed_id" value="{{$item->hashed_id}}">
+                        <input type="hidden" name="hashed_id" value="">{{$hashIds->encode($item->id)}}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="col-sm-12">

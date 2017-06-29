@@ -2,6 +2,83 @@
 @section('content')
 
             <div id="content" class="mt-10">
+
+                <!-- *** HOT PRODUCT SLIDESHOW ***
+        _________________________________________________________ -->
+                <div id="hot">
+
+{{--
+                    <div class="box">
+                        <div class="container">
+                            <div class="col-md-12">
+                                <h2>Recently uploaded</h2>
+                            </div>
+                        </div>
+                    </div>
+--}}
+
+                    <div class="container">
+                        <div class="product-slider">
+                            @if(isset($items) && count($items) > 0)
+                                @foreach($items as $item)
+                                    <div class="item">
+                                        <div class="product">
+                                            <div class="flip-container">
+                                                <div class="flipper">
+                                                    <div class="front">
+                                                        <a href="/items/{{$hashIds->encode($item->id)}}/details">
+
+                                                            @if(isset($item->images) && count($item->images) > 0)
+                                                                <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                                            @else
+                                                                <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                            @endif
+                                                        </a>
+                                                    </div>
+                                                    <div class="back">
+                                                        <a href="/items/{{$hashIds->encode($item->id)}}/details">
+                                                            @if(isset($item->images) && count($item->images) > 1)
+                                                                <img src="{{$item->images[1]->url}}" alt="" class="img-responsive">
+                                                            @else
+                                                                <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                            @endif
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="/items/{{$hashIds->encode($item->id)}}/details" class="invisible">
+                                                @if(isset($item->images) && count($item->images) > 0)
+                                                    <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                                @else
+                                                    <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                @endif
+                                            </a>
+                                            <div class="text">
+                                                <h3><a href="/items/{{$hashIds->encode($item->id)}}/details">{{$item->name}}</a></h3>
+                                                <p class="price"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
+                                                <p class="buttons"><a href="/items/{{$hashIds->encode($item->id)}}/details" class="btn btn-primary">View Details</a></p>
+                                            </div>
+                                            <!-- /.text -->
+                                        </div>
+                                        <!-- /.product -->
+                                    </div>
+
+                                @endforeach
+                            @else
+
+
+                            @endif
+
+
+
+                        </div>
+                        <!-- /.product-slider -->
+                    </div>
+                    <!-- /.container -->
+
+                </div>
+                <!-- /#hot -->
+
                 <!-- *** ADVANTAGES HOMEPAGE *** _________________________________________________________ -->
                 <div id="advantages">
 
@@ -25,7 +102,7 @@
 
                                     <h3><a href="#">Post your items</a></h3>
                                     <p>
-                                       Post or search for items of interest. Regularly check your dashboard for
+                                        Post or search for items of interest. Regularly check your dashboard for
 
                                         trade offers – to see what other Barterers have offered you.
                                     </p>
@@ -52,81 +129,6 @@
 
                 <!-- *** ADVANTAGES END *** -->
 
-                <!-- *** HOT PRODUCT SLIDESHOW ***
-        _________________________________________________________ -->
-                <div id="hot">
-
-{{--
-                    <div class="box">
-                        <div class="container">
-                            <div class="col-md-12">
-                                <h2>Recently uploaded</h2>
-                            </div>
-                        </div>
-                    </div>
---}}
-
-                    <div class="container">
-                        <div class="product-slider">
-                            @if(isset($items) && count($items) > 0)
-                                @foreach($items as $item)
-                                    <div class="item">
-                                        <div class="product">
-                                            <div class="flip-container">
-                                                <div class="flipper">
-                                                    <div class="front">
-                                                        <a href="/items/{{$item->hashed_id}}/details">
-
-                                                            @if(isset($item->images) && count($item->images) > 0)
-                                                                <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
-                                                            @else
-                                                                <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
-                                                            @endif
-                                                        </a>
-                                                    </div>
-                                                    <div class="back">
-                                                        <a href="/items/{{$item->hashed_id}}/details">
-                                                            @if(isset($item->images) && count($item->images) > 1)
-                                                                <img src="{{$item->images[1]->url}}" alt="" class="img-responsive">
-                                                            @else
-                                                                <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
-                                                            @endif
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a href="/items/{{$item->hashed_id}}/details" class="invisible">
-                                                @if(isset($item->images) && count($item->images) > 0)
-                                                    <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
-                                                @else
-                                                    <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
-                                                @endif
-                                            </a>
-                                            <div class="text">
-                                                <h3><a href="/items/{{$item->hashed_id}}/details">{{$item->name}}</a></h3>
-                                                <p class="price"><i class="fa fa-map-marker text-danger"></i> {{$item->state->name}}</p>
-                                                <p class="buttons"><a href="/items/{{$item->hashed_id}}/details" class="btn btn-primary">View Details</a></p>
-                                            </div>
-                                            <!-- /.text -->
-                                        </div>
-                                        <!-- /.product -->
-                                    </div>
-
-                                @endforeach
-                            @else
-
-
-                            @endif
-
-
-
-                        </div>
-                        <!-- /.product-slider -->
-                    </div>
-                    <!-- /.container -->
-
-                </div>
-                <!-- /#hot -->
 
                 <!-- *** HOT END *** -->
 

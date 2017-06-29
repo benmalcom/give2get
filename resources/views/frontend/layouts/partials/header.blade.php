@@ -7,7 +7,7 @@
             <ul class="menu">
                 @if( Auth::check())
                     @if( Auth::user()->isAdmin())
-                        <li><a href="{{url('/a/dashboard')}}">Admin</a></li>
+                        <li><a href="{{url('/admin/dashboard')}}">Admin</a></li>
                     @endif
                     <li><a href="{{url('/profile')}}">Profile</a></li>
                     <li>

@@ -61,7 +61,6 @@ class ItemController extends Controller
             return redirect()->back()->withErrors($validator);
         }
         $inputs['user_id'] = \Auth::user()->id;
-        $inputs['hashed_id'] = $this->hashids->encode(time());
         $images = [];
         $item = Item::create($inputs);
 
@@ -95,7 +94,8 @@ class ItemController extends Controller
     public function show($hashed_id)
     {
         //
-        $item = Item::where('hashed_id',$hashed_id)->with('state')->with('poster')->with('images')->first();
+        $id = $this->getHashIds()->decode($hashed_id)[0];
+        $item = Item::where('id',$id)->with('state')->with('poster')->with('images')->first();
         if(!is_null($item)){
             $item = $item->incrementViews();
         }
@@ -114,10 +114,10 @@ class ItemController extends Controller
     public function edit($hashed_id)
     {
         //
-
+        $id = $this->getHashIds()->decode($hashed_id)[0];
         $states = State::all();
         $categories = Category::all();
-        $item = Item::where('hashed_id',$hashed_id)->with('category')->with('state')->with('poster')->with('images')->first();
+        $item = Item::where('id',$id)->with('category')->with('state')->with('poster')->with('images')->first();
         return view('frontend.pages.item.edit',compact('item','categories','states'));
     }
 
@@ -137,13 +137,14 @@ class ItemController extends Controller
             return redirect()->back()->withErrors($validator);
         }
         $hashed_id =  $inputs['hashed_id'];
-        $item = Item::where('hashed_id',$hashed_id)->first();
+        $id = $this->getHashIds()->decode($hashed_id)[0];
+        unset($inputs['hashed_id']);
+        $item = Item::find($id)->update($inputs);
         if(is_null($item))
         {
             $this->setFlashMessage("Item not found!",2);
             return redirect('/');
         }
-        Item::updateOrCreate(['id'=>$item->id],$inputs);
         $this->setFlashMessage("Item details updated",1);
         return redirect()->back();
     }
@@ -157,8 +158,8 @@ class ItemController extends Controller
     public function destroy($hashed_id)
     {
         //
-
-        $item = Item::where('hashed_id',$hashed_id)->first();
+        $id = $this->getHashIds()->decode($hashed_id)[0];
+        $item = Item::find($id);
         $user = \Auth::user();
         if($user->id != $item->user_id || !$user->isAdmin())
         {
@@ -194,8 +195,9 @@ class ItemController extends Controller
     public function getItemsByCategory($hashed_id)
     {
         //
-        $category = Category::where('hashed_id',$hashed_id)->first();
-        $items = Item::where('category_id',$category->id)->with('category','state','poster','images')->take(8)->get();
+        $id = $this->getHashIds()->decode($hashed_id)[0];
+        $category = Category::find($id);
+        $items = Item::where('category_id',$category->id)->with('category','state','poster','images')->take(10)->get();
         $count = Item::where('category_id',$category->id)->count();
         return view('frontend.pages.item.category-items',compact('items','category','count'));
     }

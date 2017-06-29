@@ -11,7 +11,7 @@
     <meta name="author" content="Ondrej Svestka | ondrejsvestka.cz">
     <meta name="keywords" content="">
 
-    <title>{{isset($title) ? $title : 'Give2get | Exchange your items for another'}}</title>
+    <title>{{isset($appName) ? $appName : 'Give2get | Exchange your items for another'}}</title>
 
     <meta name="keywords" content="">
 
@@ -50,7 +50,7 @@ _________________________________________________________ -->
 
 <!-- *** NAVBAR END *** -->
 <div id="all">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-6 col-md-offset-3 mt-10">
         @if(Session::has('flash_message'))
             {!! Session::get('flash_message') !!}
         @endif

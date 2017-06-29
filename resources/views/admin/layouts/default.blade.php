@@ -19,6 +19,7 @@
     <link href="{{asset('assets/css/menu.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css" />
     <script src="{{asset('assets/plugins/switchery/switchery.min.css')}}"></script>
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css" />
 
 
 
@@ -44,7 +45,12 @@
 
 <div class="wrapper">
     <div class="container">
-
+        <div class="col-md-6 col-md-offset-3 mt-20">
+            @if(Session::has('flash_message'))
+                {!! Session::get('flash_message') !!}
+            @endif
+        </div>
+        <div class="clearfix"></div>
         @yield('content')
         <!-- Footer -->
         @include('admin.layouts.partials.footer')

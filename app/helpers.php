@@ -6,3 +6,11 @@
  * Time: 9:18 PM
  */
 
+function shorten($string)
+{
+    if (strlen($string) >= 20) {
+        return substr($string, 0, 10) . " ... " . substr($string, -5);
+    } else {
+        return $string;
+    }
+}

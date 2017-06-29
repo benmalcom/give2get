@@ -31,22 +31,21 @@ Route::resource('user-types', 'UserTypeController');
 Route::resource('transactions', 'TransactionController');
 
 
-Route::group(['prefix' => 'a','middleware'=>['auth','admin']], function () {
+Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function () {
     Route::get('dashboard','AdminController@getDashboard');
-
     Route::get('categories','AdminController@getCategories');
     Route::post('categories','AdminController@postCategories');
     Route::get('categories/{hashed_id}/delete','AdminController@deleteCategory');
     Route::get('categories/{hashed_id}/edit','AdminController@editCategory');
-    Route::post('items/categories','AdminController@postEditCategory');
+    Route::post('categories/edit','AdminController@postEditCategory');
 
     Route::get('items','AdminController@getItems');
     Route::get('items/{hashed_id}/delete','AdminController@deleteItem');
 
     Route::get('users','AdminController@getUsers');
     Route::get('users/{hashed_id}/delete','AdminController@deleteUser');
-    Route::post('make-admin','AdminController@makeUserAdmin');
-    Route::post('remove-admin','AdminController@removeAdmin');
+    Route::post('make','AdminController@makeUserAdmin');
+    Route::post('remove','AdminController@removeAdmin');
 
     Route::get('transactions','AdminController@getTransactions');
 });
