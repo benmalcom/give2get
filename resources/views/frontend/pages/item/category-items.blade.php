@@ -42,18 +42,18 @@
                                                 <a href="/items/{{$hashIds->encode($item->id)}}/details">
 
                                                     @if(isset($item->images) && count($item->images) > 0)
-                                                        <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                                        <img src="{{$item->images[0]->url}}" alt="" class="img-responsive item-img2">
                                                     @else
-                                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive item-img2">
                                                     @endif
                                                 </a>
                                             </div>
                                             <div class="back">
                                                 <a href="/items/{{$hashIds->encode($item->id)}}/details">
                                                     @if(isset($item->images) && count($item->images) > 1)
-                                                        <img src="{{$item->images[1]->url}}" alt="" class="img-responsive">
+                                                        <img src="{{$item->images[1]->url}}" alt="" class="img-responsive item-img2">
                                                     @else
-                                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                                        <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive item-img2">
                                                     @endif
                                                 </a>
                                             </div>
@@ -61,9 +61,9 @@
                                     </div>
                                     <a href="/items/{{$hashIds->encode($item->id)}}/details" class="invisible">
                                         @if(isset($item->images) && count($item->images) > 0)
-                                            <img src="{{$item->images[0]->url}}" alt="" class="img-responsive">
+                                            <img src="{{$item->images[0]->url}}" alt="" class="img-responsive item-img2">
                                         @else
-                                            <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive">
+                                            <img src="{{asset('custom/img/image_not_available.png')}}" alt="" class="img-responsive item-img2">
                                         @endif
                                     </a>
                                     <div class="text m-0">

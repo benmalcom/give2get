@@ -1090,3 +1090,12 @@ Background colors*/
     background: url("../custom/img/intro-bg-2.jpg") no-repeat scroll center top/ cover;
 }
 
+.item-img{
+    width: 100% !important;
+    height: 200px !important;
+}
+
+.item-img2{
+    width: 100% !important;
+    height: 230px !important;
+}
