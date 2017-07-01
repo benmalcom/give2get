@@ -135,9 +135,9 @@ class AdminController extends Controller
 
     public function makeUserAdmin(Request $request)
     {
-        $hashed_id = $request->get('encode');
+        $hashed_id = $request->get('hashed_id');
         if(is_null($hashed_id)){
-            $this->setFlashMessage("User not found!",2);
+            $this->setFlashMessage("Parameter not found!",2);
             return redirect()->back();
         }
         $id = $this->getHashIds()->decode($hashed_id)[0];
@@ -155,15 +155,20 @@ class AdminController extends Controller
 
     public function removeAdmin(Request $request)
     {
-        $hashed_id = $request->get('encode');
+        $hashed_id = $request->get('hashed_id');
         if(is_null($hashed_id)){
-            $this->setFlashMessage("User not found!",2);
+            $this->setFlashMessage("Parameter not found!",2);
             return redirect()->back();
         }
         $id = $this->getHashIds()->decode($hashed_id)[0];
         $user = User::find($id);
         if(is_null($user)){
             $this->setFlashMessage("User not found!",2);
+            return redirect()->back();
+        }
+
+        if($user->isSuperAdmin()){
+            $this->setFlashMessage("You can't remove this admin!",2);
             return redirect()->back();
         }
         $user->user_type = 0;

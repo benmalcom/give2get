@@ -39,14 +39,14 @@
                             <form method="post" action="{{url('admin/remove')}}">
                             {{csrf_field()}}
                                 {{--<input type="hidden" name="_method" value="PATCH">--}}
-                            <input type="hidden" name="encode" value="{{$hashIds->encode($user->id)}}">
+                            <input type="hidden" name="hashed_id" value="{{$hashIds->encode($user->id)}}">
                             <button type="submit" class="btn btn-warning btn-xs">Remove Admin</button>
                         </form>
                         @else
                             <form method="post" action="{{url('/admin/make')}}">
                                 {{csrf_field()}}
                                 {{--<input type="hidden" name="_method" value="PATCH">--}}
-                                <input type="hidden" name="id" value="{{$hashIds->encode($user->id)}}">
+                                <input type="hidden" name="hashed_id" value="{{$hashIds->encode($user->id)}}">
                                 <button type="submit" class="btn btn-success btn-xs">Make Admin</button>
                             </form>
                         @endif
